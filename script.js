@@ -4,6 +4,7 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
 
+populateUI();
 
 let ticketPrice = +movieSelect.value; // same as parseInt(), turns the variable into a number type
 
@@ -33,7 +34,7 @@ const updateSelectedCount = () => {
 }   
 
 // Get data from localStorage and populate UI 
-const populateUI = () => {
+function populateUI() {
     const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')); // we parse it back into an array
 
     if (selectedSeats !== null && selectedSeats.length > 0) {
@@ -50,9 +51,6 @@ const populateUI = () => {
         movieSelect.selectedIndex = selectedMovieIndex; // secilmis movie indexini aliyoruz ve site yuklendiginde tekrar seciyoruz
     }
 }
-
-populateUI();
-
 
 // Movie select event 
 movieSelect.addEventListener('change', e => {
